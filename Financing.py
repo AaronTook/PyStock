@@ -1,22 +1,27 @@
 """
-Name: AaronTook
-Use:  Defines functions and variables for use in Pystock.py.
+	Author: AaronTook (https://github.com/AaronTook/)
+	Last modified : 1/7/2023
+	Project name: PyStock
+	File name: Financing.py
+	File description: Utility functions for use in PyStock.py to return data about a ticker.
 """
 
-import json,os
+import json, os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import yfinance as yf
 
-Dow_Jones = 'DJI'
-NASDAQ = 'NDX'
-SP_500 = 'SPX'
+""" Default tickers """
+Dow_Jones = '^DJI'
+NASDAQ = '^NDX'
+SP_500 = '^SPX'
 GO = 'GOOG'
 AM = 'AMZN'
 PF = 'PFE'
 
 def graph1DayValue(StockName):
+	""" Graph the value of a ticker for the most recent day's data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="1d")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -27,6 +32,7 @@ def graph1DayValue(StockName):
 	plt.show()
 
 def graph5DayValue(StockName):
+	""" Graph the value of a ticker for the past five days' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="5d")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -37,6 +43,7 @@ def graph5DayValue(StockName):
 	plt.show()
 
 def graph1MonthValue(StockName):
+	""" Graph the value of a ticker for the most recent month's data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="1mo")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -47,6 +54,7 @@ def graph1MonthValue(StockName):
 	plt.show()
 
 def graph3MonthValue(StockName):
+	""" Graph the value of a ticker for the past three months' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="3mo")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -57,6 +65,7 @@ def graph3MonthValue(StockName):
 	plt.show()
 	
 def graph6MonthValue(StockName):
+	""" Graph the value of a ticker for the past six months' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="6mo")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -67,6 +76,7 @@ def graph6MonthValue(StockName):
 	plt.show()
 	
 def graph1YearValue(StockName):
+	""" Graph the value of a ticker for the most recent year's data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="1y")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -77,6 +87,7 @@ def graph1YearValue(StockName):
 	plt.show()
 	
 def graph2YearValue(StockName):
+	""" Graph the value of a ticker for the past two years' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="2y")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -87,6 +98,7 @@ def graph2YearValue(StockName):
 	plt.show()
 	
 def graph5YearValue(StockName):
+	""" Graph the value of a ticker for the past five years' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="5y")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -97,6 +109,7 @@ def graph5YearValue(StockName):
 	plt.show()
 	
 def graph10YearValue(StockName):
+	""" Graph the value of a ticker for the past ten years' data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="10y")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -107,6 +120,7 @@ def graph10YearValue(StockName):
 	plt.show()
 	
 def graphYTDValue(StockName):
+	""" Graph the value of a ticker for the year to date data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="ytd")
 	plt.figure(figsize=(12,5))
@@ -117,6 +131,7 @@ def graphYTDValue(StockName):
 	plt.show()
 	
 def graphMaxValue(StockName):
+	""" Graph the value of a ticker for the maximum range of data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="max")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -127,6 +142,7 @@ def graphMaxValue(StockName):
 	plt.show()
 
 def graphDailyValue(StockName):
+	""" Graph the value of a ticker for the most recent day's data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="5d")
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
@@ -179,6 +195,7 @@ def moving_average(x, w):
     return np.convolve(x, np.ones(w), 'same') / w
 
 def graphDailyChange(StockName):
+	""" Graph the value of a ticker for the most recent day's data '"""
 	yf_ticker = yf.Ticker(StockName.upper())
 	history = yf_ticker.history(period="max")
 	datevals = pd.to_datetime(history.index[1:].values)
@@ -193,11 +210,13 @@ def graphDailyChange(StockName):
 	plt.show()
 
 def get_current_price(symbol):
-    ticker = yf.Ticker(symbol)
-    todays_data = ticker.history(period='1d')
-    return round(todays_data['Close'][0],2)
+	""" Get the current price of one share of stock of the given ticker """
+	ticker = yf.Ticker(symbol)
+	todays_data = ticker.history(period='1d')
+	return round(todays_data['Close'][0],2)
 
 def get_business_summary(symbol):
+	""" Get a text summary of the ticker's company """
 	ticker = yf.Ticker(symbol)
 	info = ticker.info
 	return info["longBusinessSummary"]

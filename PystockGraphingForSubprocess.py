@@ -1,16 +1,20 @@
 """
-Name: AaronTook
-Use:  Uses functions in FinancingDouble.py to render a passed list of stock data over a passed period of time. This module is imported and run by PyStock.py.
+	Author: AaronTook (https://github.com/AaronTook/)
+	Last modified : 1/7/2023
+	Project name: PyStock
+	File name: PystockGraphingForSubprocess.py
+	File description: When passed arguments via subprocess from PyStock.py, graph the passed stocks in a seperate instance so that PyStock.py is still interactive.
 """
 
 from FinancingDouble import *
 import sys
 
-
+""" Parse the passed arguments into a useable format """
 StockString = sys.argv[1]
 Selected = sys.argv[2]
 StockList = StockString.split(">>")
 
+""" Graph based on length of time for the graph, using functions from FinancingDouble.py """
 if Selected == "5d":
 	graph5DayValue(StockList)
 if Selected == "1mo":
@@ -23,4 +27,3 @@ if Selected == "ytd":
 	graphYTDValue(StockList)
 if Selected == "max":
 	graphMaxValue(StockList)
-

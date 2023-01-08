@@ -1,6 +1,9 @@
 """
-Name: AaronTook
-Use:  Defines functions to retrieve and render stock market data using matplotlib.pyplot. This module is imported by PystockGraphingForSubprocess.py.
+	Author: AaronTook (https://github.com/AaronTook/)
+	Last modified : 1/7/2023
+	Project name: PyStock
+	File name: FinancingDouble.py
+	File description: Utility functions for use in PyStock.py (via subprocess use in PystockGraphingForSubprocess.py) to graph multiple tickers over time.
 """
 
 import json,os
@@ -11,6 +14,7 @@ import yfinance as yf
 
 
 def graph1DayValue(StockList):
+	""" Graph the value of the tickers for the most recent day's data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (1 day)')
@@ -27,6 +31,7 @@ def graph1DayValue(StockList):
 	plt.show()
 
 def graph5DayValue(StockList):
+	""" Graph the value of the tickers for the past five days' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (5 days)')
@@ -43,6 +48,7 @@ def graph5DayValue(StockList):
 	plt.show()
 
 def graph1MonthValue(StockList):
+	""" Graph the value of the tickers for the most recent month's data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (1 month)')
@@ -59,6 +65,7 @@ def graph1MonthValue(StockList):
 	plt.show()
 
 def graph3MonthValue(StockList):
+	""" Graph the value of the tickers for the past three months' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (3 months)')
@@ -75,6 +82,7 @@ def graph3MonthValue(StockList):
 	plt.show()
 
 def graph6MonthValue(StockList):
+	""" Graph the value of the tickers for the past six months' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (6 months)')
@@ -91,6 +99,7 @@ def graph6MonthValue(StockList):
 	plt.show()
 
 def graph1YearValue(StockList):
+	""" Graph the value of the tickers for the most recent year's data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (1 year)')
@@ -107,6 +116,7 @@ def graph1YearValue(StockList):
 	plt.show()
 
 def graph2YearValue(StockList):
+	""" Graph the value of the tickers for the past two years' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (2 years)')
@@ -123,6 +133,7 @@ def graph2YearValue(StockList):
 	plt.show()
 
 def graph5YearValue(StockList):
+	""" Graph the value of the tickers for the past five years' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (5 years)')
@@ -139,6 +150,7 @@ def graph5YearValue(StockList):
 	plt.show()
 
 def graph10YearValue(StockList):
+	""" Graph the value of the tickers for the past ten years' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (10 years)')
@@ -155,6 +167,7 @@ def graph10YearValue(StockList):
 	plt.show()
 
 def graphYTDValue(StockList):
+	""" Graph the value of the tickers for the year to date data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (YTD)')
@@ -171,6 +184,7 @@ def graphYTDValue(StockList):
 	plt.show()
 
 def graphMaxValue(StockList):
+	""" Graph the value of the tickers for the maximum range of data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (max)')
@@ -187,6 +201,7 @@ def graphMaxValue(StockList):
 	plt.show()
 
 def graphDailyValue(StockList):
+	""" Graph the value of the tickers for the past five days' data '"""
 	plt.figure("PyStock Chart",edgecolor="black",figsize=(12,5))
 	nameOfChart = ", ".join(StockList)
 	plt.title(f'Price of {nameOfChart} (5 day)')
@@ -201,4 +216,3 @@ def graphDailyValue(StockList):
 	plt.xlabel('Date')
 	plt.legend(legendList)
 	plt.show()
-
